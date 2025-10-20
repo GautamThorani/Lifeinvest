@@ -1,0 +1,33 @@
+LifeInvest Database Schema
+==========================
+
+investments (Table)
+-------------------
+┌─────────────────┬───────────────────┬─────────────┐
+│ Column Name     │ Type              │ Constraints │
+├─────────────────┼───────────────────┼─────────────┤
+│ id              │ UUID              │ PRIMARY KEY │
+│ type            │ VARCHAR(20)       │ NOT NULL    │
+│ category        │ VARCHAR(50)       │ NOT NULL    │
+│ title           │ VARCHAR(200)      │ NOT NULL    │
+│ description     │ TEXT              │             │
+│ amount_invested │ NUMERIC(10,2)     │ NOT NULL    │
+│ currency        │ VARCHAR(10)       │             │
+│ invested_at     │ TIMESTAMP         │ NOT NULL    │
+│ created_at      │ TIMESTAMP         │ DEFAULT NOW │
+└─────────────────┴───────────────────┴─────────────┘
+
+Relationships:
+──────────────
+investments (1) ──── (0..*) investment_returns [FUTURE]
+investments (1) ──── (0..*) investment_tags [FUTURE]
+
+Example Data:
+─────────────
+┌───────────────────┬──────────┬───────────┬─────────────────────────┐
+│ id                │ type     │ category  │ title                   │
+├───────────────────┼──────────┼───────────┼─────────────────────────┤
+│ uuid-1234...      │ time     │ learning  │ Learn Docker            │
+│ uuid-5678...      │ money    │ learning  │ AWS Certification       │
+│ uuid-9012...      │ energy   │ job_hunt  │ Canonical Application   │
+└───────────────────┴──────────┴───────────┴────────────┴────────────┘
