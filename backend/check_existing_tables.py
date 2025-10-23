@@ -17,3 +17,4 @@ with engine.connect() as conn:
     print("Existing tables:")
     for table in result:
         print(f"  - {table[0]}")
+#day 4 started
